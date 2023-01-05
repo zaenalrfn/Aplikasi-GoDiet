@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --colorBiru: #00b1f1;
+  --colorMerah: #ea444e;
+  --colorOren: #feb546;
+  --colorKrem: #d3dc88;
+  --colorHijau: #74dd78;
+  --colorDongker: #4c6c93;
+  --colorBiruMuda: #b0d3cd;
+  --colorInput: #e4f3f9;
+  --colorTitle: #06283d;
+  --colorAlert: #ffdfd8;
+  --textTitle: 24px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+/* bagian header */
+#header {
+  margin: 0 10px;
+}
+.titleHU {
+  font-weight: 600;
+  font-size: var(--textTitle);
+  color: var(--colorTitle);
+}
+/*  bagian fitur menu */
+#fiturMenu {
+  margin-top: 49px;
+}
+.card {
+  overflow: hidden;
+  height: 120px;
+  border-radius: 30px;
+}
+.card img {
+  position: relative;
+  top: -20px;
+  width: 137.14px;
+  height: 145.77px;
+}
+.card img[alt="2"] {
+  top: -10px;
+}
+.card img[alt="3"] {
+  left: -30px;
+  top: -10px;
+}
+.card img[alt="4"] {
+  left: -25px;
+}
+.card .card-body {
+  margin-left: -29px;
+  text-align: left;
+}
+.card-body h2 {
+  font-size: var(--textTitle);
+  text-transform: uppercase;
+}
+.card .card-text {
+  width: 80%;
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 50%;
+}
+#idealTubuh {
+  background-image: linear-gradient(
+    to left top,
+    #006f97,
+    #007fad,
+    #008fc3,
+    #00a0da,
+    #00b1f1
+  );
+}
+#aktiKalori {
+  background-image: linear-gradient(
+    to left top,
+    #ae1c36,
+    #ab1a34,
+    #a81832,
+    #a61630,
+    #a3142e,
+    #a81830,
+    #ac1c32,
+    #b11f34,
+    #bf293a,
+    #cd3241,
+    #dc3b47,
+    #ea444e
+  );
+}
+#menuDiet {
+  background-image: linear-gradient(
+    to left top,
+    #889900,
+    #8fa100,
+    #96a901,
+    #9eb101,
+    #a5b902
+  );
+}
+#tipsDiet {
+  background-image: linear-gradient(
+    to left top,
+    #217230,
+    #268036,
+    #2b8e3d,
+    #319c43,
+    #36aa4a
+  );
+}
