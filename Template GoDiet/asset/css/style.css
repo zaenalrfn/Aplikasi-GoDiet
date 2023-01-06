@@ -10,6 +10,7 @@
   --colorBiruMuda: #b0d3cd;
   --colorInput: #e4f3f9;
   --colorTitle: #06283d;
+  --colorText: #939393;
   --colorAlert: #ffdfd8;
   --sizeTitle: 24px;
 }
@@ -21,7 +22,11 @@
 body {
   font-family: "Poppins", sans-serif;
 }
-/* bagian header */
+/*
+==========================================================
+ bagian header 
+==========================================================
+ */
 #header {
   margin: 0 10px;
 }
@@ -30,7 +35,11 @@ body {
   font-size: var(--sizeTitle);
   color: var(--colorTitle);
 }
-/*  bagian fitur menu */
+/*  
+========================================================
+bagian fitur menu 
+========================================================
+*/
 #fiturMenu {
   margin-top: 49px;
 }
@@ -117,13 +126,17 @@ body {
   );
 }
 
-/* BAGIAN PROFIL USER */
+/* 
+=================================================================
+BAGIAN PROFIL USER 
+=================================================================
+*/
 
 #profil {
   height: 347px;
-  box-shadow: -1px 4px 5px -1px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: -1px 4px 5px -1px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: -1px 4px 5px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: -1px 4px 5px -1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: -1px 4px 5px -1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: -1px 4px 5px -1px rgba(0, 0, 0, 0.1);
   border-radius: 0px 0px 30px 30px;
   -moz-border-radius: 0px 0px 30px 30px;
   -webkit-border-radius: 0px 0px 30px 30px;
@@ -132,6 +145,10 @@ body {
 #profil .arrow-left-setting {
   margin: 0 26px;
   margin-top: 31px;
+}
+.arrow-left a,
+.setting a {
+  color: var(--colorTitle);
 }
 .img-profil .img-p {
   margin-bottom: 15px;
@@ -214,3 +231,42 @@ body {
   font-size: 8px;
   margin-top: -6px;
 }
+#riwayat {
+  margin: 20px;
+  margin-top: 46px;
+  text-align: left;
+}
+.icon-history {
+  font-size: 35px;
+}
+.title-r {
+  line-height: 2px;
+}
+.title-r h2 {
+  font-size: 22px;
+  color: var(--colorTitle);
+}
+.title-r .minggu {
+  font-size: 10px;
+  color: var(--colorText);
+}
+#riwayat .title-riwayat {
+  padding: 14px 0;
+}
+#riwayat .col-md {
+  padding: 18px 0;
+}
+.title-riwayat-akti h3 {
+  font-size: 20px;
+  color: var(--colorTitle);
+}
+.riwayat-waktu-kkal h4,
+.riwayat-waktu-kkal p {
+  font-size: 10px;
+}
+
+/* 
+=======================================================
+BAGIAN EDIT PROFIL
+=======================================================
+*/
