@@ -19,7 +19,7 @@
   <body>
     <div class="container">
       <div class="row" id="edit-profil">
-        <div class="col">
+        <div class="profil">
           <div class="btn-edit-profil d-flex justify-content-between">
             <a href="">Batal</a>
             <h2>Edit Profil</h2>
@@ -37,25 +37,41 @@
             </h3>
           </div>
         </div>
-        <divc class="col">
-            <form action="" class="form">
-                <h5>Nama</h5>
-                <input type="text">
-                <h5>Status</h5>
-                <input type="text">
-                <h5>Berat Badan</h5>
-                <input type="text">
-                <h5>Tinggi Badan</h5>
-                <input type="text">
-            </form>
+        <div class="col">
+          <form action="" class="form">
+            <h5>Nama</h5>
+            <input type="text" />
+            <h5>Status</h5>
+            <input type="text" />
+            <h5>Berat Badan</h5>
+            <input type="text" />
+            <h5>Tinggi Badan</h5>
+            <input type="text" />
+          </form>
         </div>
-        <div class="logut d-flex">
-            <h4><i class="bi bi-box-arrow-right"></i></h4>
-            <a href="">Log Out</a>
+        <div class="logout d-flex gap-2">
+          <h4><i class="bi bi-box-arrow-right"></i></h4>
+          <p id="popup-logout" onclick="Logout(true)">
+            <a href="#">Log Out</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- bagian popup logout -->
+    <div class="popup justify-content-center align-items-center">
+      <div class="box-popup">
+        <h3>Log Out?</h3>
+        <p>Apakah anda ingin log out?</p>
+        <div class="popup-btn d-flex gap-5 justify-content-center">
+          <a href="#" class="btn rounded" id="popup-tidak" onclick="Tidak(true)"
+            >Tidak</a
+          >
+          <a href="#" class="btn text-white rounded" id="popup-ya">Ya</a>
         </div>
       </div>
     </div>
 
     <script src="asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="asset/js/script.js"></script>
   </body>
 </html>
