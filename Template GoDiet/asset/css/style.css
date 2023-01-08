@@ -144,7 +144,7 @@ BAGIAN PROFIL USER
   border: 0px solid #000000;
 }
 #profil .arrow-left-setting {
-  margin: 0 26px;
+  margin: 0 20px;
   margin-top: 31px;
 }
 .arrow-left a,
@@ -233,7 +233,7 @@ BAGIAN PROFIL USER
   margin-top: -6px;
 }
 #riwayat {
-  margin: 20px;
+  margin: 0 20px;
   margin-top: 46px;
   text-align: left;
 }
@@ -273,7 +273,7 @@ BAGIAN EDIT PROFIL
 */
 
 #edit-profil {
-  margin: 0 20px;
+  margin: 0 10px;
 }
 #edit-profil .form {
   margin-top: 38px;
@@ -332,6 +332,7 @@ BAGIAN EDIT PROFIL
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(6px);
   display: none;
+  overflow-x: visible;
 }
 .popup .box-popup {
   width: 322px;
@@ -366,4 +367,69 @@ BAGIAN EDIT PROFIL
 }
 .popup-btn a:nth-child(2) {
   background-color: var(--colorMerah);
+}
+
+/* 
+=============================================================
+BAGIAN CEK IDEAL TUBUH
+=============================================================
+*/
+
+#cek-ideal-tubuh {
+  margin: 0 10px;
+}
+.title-ideal {
+  margin-top: 57px;
+  gap: 40px;
+}
+.title-ideal h2 {
+  font-size: var(--sizeTitle);
+  color: var(--colorTitle);
+  font-weight: 600;
+}
+.title-ideal a {
+  color: var(--colorTitle);
+}
+.cek-input {
+  margin-top: 40px;
+}
+.cek-input h5 {
+  font-size: 15px;
+  color: var(--colorText);
+}
+.input-ideal input {
+  width: 288px;
+  border-radius: 15px;
+  border: none;
+  background-color: var(--colorInput);
+  height: 40px;
+  padding-left: 18px;
+}
+.input-ideal p {
+  margin-top: 15px;
+  color: var(--colorText);
+}
+.input-ideal input:focus {
+  outline: none;
+}
+.cek a {
+  width: 238px;
+  height: 40px;
+  background-color: var(--colorBiru);
+  border-radius: 15px;
+  margin-top: 40px;
+  font-size: 20px;
+  font-weight: 600;
+}
+#bmi {
+  color: var(--colorHijau);
+}
+.bmi-ideal {
+  margin-top: 68px;
+}
+.bmi-ideal h4 {
+  font-size: 15px;
+}
+.bmi-ideal img {
+  margin-top: 30px;
 }

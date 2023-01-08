@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="asset/bootstrap/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" type="text/css" href="asset/css/style.css" />
+    <title>Cek Ideal Tubuh</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" id="cek-ideal-tubuh">
+        <div class="title-ideal d-flex align-items-center">
+          <a href="#">
+            <h3 class="fs-1"><i class="bi bi-arrow-left"></i></h3>
+          </a>
+          <h2 class="text-center">Cek ideal tubuh</h2>
+        </div>
+        <div class="col cek-input">
+          <h5>Berat Badan</h5>
+          <div class="input-ideal d-flex align-items-center gap-2">
+            <input type="text" />
+            <p>kg</p>
+          </div>
+          <h5>Tinggi Badan</h5>
+          <div class="input-ideal d-flex align-items-center gap-2 mt-2">
+            <input type="text" />
+            <p>cm</p>
+          </div>
+          <div class="cek text-center">
+            <a href="#" class="btn text-white">CEK</a>
+          </div>
+          <div class="bmi-ideal">
+            <h4>BMI(kg/m2): <span id="bmi">20.1</span></h4>
+            <img
+              src="asset/img/img-bmi.png"
+              alt="bmi"
+              width="330"
+              height="59.67"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="asset/js/script.js"></script>
+  </body>
+</html>
