@@ -405,14 +405,20 @@ BAGIAN CEK IDEAL TUBUH
   height: 40px;
   padding-left: 18px;
 }
-.input-ideal p {
+.input-ideal .input-alert {
+  background-color: var(--colorAlert);
+  outline: 1px solid var(--colorMerah);
+}
+.input-ideal p,
+.grafik p {
   margin-top: 15px;
   color: var(--colorText);
 }
 .input-ideal input:focus {
   outline: none;
 }
-.cek a {
+.cek a,
+.cek-kebutuhan-kalori a {
   width: 238px;
   height: 40px;
   background-color: var(--colorBiru);
@@ -427,9 +433,32 @@ BAGIAN CEK IDEAL TUBUH
 .bmi-ideal {
   margin-top: 68px;
 }
+#bmi-deskripsi {
+  color: var(--colorHijau);
+  font-size: 13px;
+}
 .bmi-ideal h4 {
   font-size: 15px;
 }
 .bmi-ideal img {
   margin-top: 30px;
+}
+.img-bmr {
+  margin-left: -15px;
+}
+.Bb-icon {
+  width: 15px;
+  height: 15px;
+  background-color: var(--colorOren);
+}
+.Tb-icon {
+  width: 15px;
+  height: 15px;
+  background-color: purple;
+}
+.grafik p {
+  font-size: 15px;
+}
+.cek-kebutuhan-kalori a {
+  margin-top: 15px;
 }
