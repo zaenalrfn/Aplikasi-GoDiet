@@ -414,7 +414,7 @@ BAGIAN EDIT PROFIL
 
 /* 
 =============================================================
-BAGIAN CEK IDEAL TUBUH
+BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
 =============================================================
 */
 
@@ -423,7 +423,7 @@ BAGIAN CEK IDEAL TUBUH
 }
 .title-ideal {
   margin-top: 57px;
-  gap: 45px;
+  gap: 56px;
 }
 .title-ideal h2 {
   font-size: var(--sizeTitle);
@@ -475,7 +475,7 @@ BAGIAN CEK IDEAL TUBUH
   color: var(--colorHijau);
 }
 .bmi-ideal {
-  margin-top: 68px;
+  margin-top: 40px;
 }
 #bmi-deskripsi {
   color: var(--colorHijau);
