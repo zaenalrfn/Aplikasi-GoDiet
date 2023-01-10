@@ -10,6 +10,18 @@ const Tidak = () => {
   document.body.style.overflow = "";
 };
 
+// BAGIAN POPUP CEK HALAMAN UTAMA
+let popupCek = document.querySelector(".popup-cek");
+window.onload = () => {
+  setTimeout(function () {
+    popupCek.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }, 500);
+};
+const CekHu = () => {
+  popupCek.style.display = "";
+  document.body.style.overflow = "";
+};
 // BAGIAN ALERT INPUT
 let InputBb = document.getElementById("berat-badan"),
   InputTb = document.getElementById("tinggi-badan"),

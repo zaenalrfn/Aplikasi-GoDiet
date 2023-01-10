@@ -126,6 +126,49 @@ bagian fitur menu
     #36aa4a
   );
 }
+.popup-cek {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  display: none;
+}
+.popup-hu {
+  width: 322px;
+  height: 282px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 10px 40px 60px 3px rgba(0, 0, 0, 0.07);
+  -webkit-box-shadow: 10px 40px 60px 3px rgba(0, 0, 0, 0.07);
+  -moz-box-shadow: 10px 40px 60px 3px rgba(0, 0, 0, 0.07);
+  padding: 25px;
+}
+.popup-hu #popup-input-hu {
+  background-color: var(--colorInput);
+  border: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 15px;
+  padding-left: 14px;
+}
+.popup-hu h3 {
+  color: var(--colorTitle);
+  font-size: 20px;
+}
+.popup-hu #popup-input-hu:focus {
+  outline: none;
+}
+.btn-radio {
+  gap: 89px;
+}
+.pop-ya {
+  background-color: var(--colorBiru);
+  padding: 5px 31px;
+  font-size: 18px;
+}
+.form-check-label {
+  font-size: 18px;
+}
 
 /* 
 =================================================================
@@ -380,12 +423,13 @@ BAGIAN CEK IDEAL TUBUH
 }
 .title-ideal {
   margin-top: 57px;
-  gap: 40px;
+  gap: 45px;
 }
 .title-ideal h2 {
   font-size: var(--sizeTitle);
   color: var(--colorTitle);
   font-weight: 600;
+  margin-top: 12px;
 }
 .title-ideal a {
   color: var(--colorTitle);

@@ -89,6 +89,47 @@
         </div>
       </div>
     </div>
+    <!-- bagian popup-cek-halaman-utama -->
+    <div class="popup-cek fixed-top justify-content-center align-items-center">
+      <div class="popup-hu">
+        <div>
+          <h3>Status</h3>
+          <input type="text" id="popup-input-hu" class="mt-1" />
+        </div>
+        <div class="mt-4">
+          <h3>Cek Alergi</h3>
+          <div class="btn-radio d-flex mt-3">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="option1"
+                width="14"
+                height="14"
+              />
+              <label class="form-check-label" for="inlineRadio1">Ya</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio2"
+                value="option2"
+              />
+              <label class="form-check-label" for="inlineRadio2">Tidak</label>
+            </div>
+          </div>
+          <div class="mt-4 text-center">
+            <a href="#" class="btn pop-ya text-white" onclick="CekHu(true)"
+              >Ya</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="asset/bootstrap/js/bootstrap.min.js"></script>
     <script src="asset/js/script.js"></script>
