@@ -44,17 +44,3 @@ const Cek = () => {
     InputUmur.classList.remove("input-alert");
   }
 };
-Cek();
-
-// const options = {
-//   method: "GET",
-//   headers: {
-//     "X-RapidAPI-Key": "023f98117fmsh1c2705b6ac9a25fp11f719jsna2f7cf1eb86c",
-//     "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-//   },
-// };
-
-// fetch("https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio", options)
-//   .then((response) => response.json())
-//   .then((response) => console.log(response))
-//   .catch((err) => console.error(err));
