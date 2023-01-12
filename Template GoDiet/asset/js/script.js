@@ -9,25 +9,6 @@ const Tidak = () => {
   popup.style.display = "";
   document.body.style.overflow = "";
 };
-
-// BAGIAN POPUP CEK HALAMAN UTAMA
-const notifyCek = "notifyCek";
-let popupCek = document.querySelector(".popup-cek"),
-  cekHu = document.getElementById("cekHu");
-setTimeout(function () {
-  popupCek.style.top = "0";
-}, 1000);
-cekHu.onclick = async () => {
-  localStorage.setItem(notifyCek, "true");
-  true;
-  NotifyCek();
-};
-function NotifyCek() {
-  if (localStorage.getItem(notifyCek)) {
-    popupCek.style.display = "none";
-  }
-}
-NotifyCek();
 // BAGIAN ALERT INPUT
 let InputBb = document.getElementById("berat-badan"),
   InputTb = document.getElementById("tinggi-badan"),
@@ -45,6 +26,23 @@ const Cek = () => {
   }
 };
 
+// BAGIAN POPUP CEK HALAMAN UTAMA
+const notifyCek = "notifyCek";
+let popupCek = document.querySelector(".popup-cek"),
+  cekHu = document.getElementById("cekHu");
+setTimeout(function () {
+  popupCek.style.top = "0";
+}, 1000);
+cekHu.onclick = () => {
+  localStorage.setItem(notifyCek, "true");
+  NotifyCek();
+};
+function NotifyCek() {
+  if (localStorage.getItem(notifyCek)) {
+    popupCek.style.display = "none";
+  }
+}
+NotifyCek();
 // API
 // aktivitas kalori : https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
 // menu diet : https://rapidapi.com/spoonacular/api/recipe-food-nutrition
