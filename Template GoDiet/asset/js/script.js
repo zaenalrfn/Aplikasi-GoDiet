@@ -44,3 +44,7 @@ const Cek = () => {
     InputUmur.classList.remove("input-alert");
   }
 };
+
+// API
+// aktivitas kalori : https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
+// menu diet : https://rapidapi.com/spoonacular/api/recipe-food-nutrition
