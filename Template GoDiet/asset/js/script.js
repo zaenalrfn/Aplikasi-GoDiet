@@ -9,6 +9,17 @@ const Tidak = () => {
   popup.style.display = "";
   document.body.style.overflow = "";
 };
+// BAGIAN GERAK AKTIVITAS
+let gerakKembali = document.getElementById("gerak-kembali"),
+  popGerak = document.querySelector(".popGerak");
+gerakKembali.onclick = () => {
+  popGerak.style.display = "none";
+  document.body.style.overflow = "";
+};
+const HitungKalori = () => {
+  popGerak.style.display = "flex";
+  document.body.style.overflow = "hidden";
+};
 // BAGIAN ALERT INPUT
 let InputBb = document.getElementById("berat-badan"),
   InputTb = document.getElementById("tinggi-badan"),
@@ -32,6 +43,7 @@ let popupCek = document.querySelector(".popup-cek"),
   cekHu = document.getElementById("cekHu");
 setTimeout(function () {
   popupCek.style.top = "0";
+  document.body.style.overflow = "hidden";
 }, 1000);
 cekHu.onclick = () => {
   localStorage.setItem(notifyCek, "true");
@@ -40,9 +52,11 @@ cekHu.onclick = () => {
 function NotifyCek() {
   if (localStorage.getItem(notifyCek)) {
     popupCek.style.display = "none";
+    document.body.style.overflow = "none";
   }
 }
 NotifyCek();
+
 // API
 // aktivitas kalori : https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
 // menu diet : https://rapidapi.com/spoonacular/api/recipe-food-nutrition
