@@ -44,7 +44,7 @@ const router = createRouter({
       component: AktivitasKalori,
     },
     {
-      path: "/aktivitasGerak",
+      path: "/aktivitasGerak/:id",
       name: "aktivitasGerak",
       component: AktivitasGerak,
     },

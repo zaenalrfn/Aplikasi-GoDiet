@@ -2,23 +2,23 @@
   <div class="container">
     <div class="header">
       <div class="row justify-content-between mt-5 mb-4">
-        <div class="col-2 d-flex justify-content-center" id="title">
+        <div class="col" id="title">
           <RouterLink to="/aktivitasKalori">
             <img src="/img/Vector 2.png" />
           </RouterLink>
+          <div class="d-block text-center">
+            <img :src="aktivitasId.gifUrl" alt="" :width="303" :height="519" />
+          </div>
+          <div>
+            <h2>
+              {{ aktivitasId.name }} <br />
+              30 Detik <span class="text-warning">x 3</span>
+            </h2>
+          </div>
         </div>
       </div>
     </div>
-    <div class="d-block text-center">
-      <img src="/img/human.png" alt="" width="303" />
-    </div>
     <div>
-      <div>
-        <h2>
-          Loncat Bintang <br />
-          30 Detik <span class="text-warning">x 3</span>
-        </h2>
-      </div>
       <p>Berat Badan</p>
       <form class="row g-4 d-flex justify-content-center">
         <div class="col-4">
@@ -43,3 +43,35 @@
     </div>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      aktivitasId: [],
+    };
+  },
+  mounted() {
+    let self = this;
+    let parameterId = this.$route.params.id;
+    const options = {
+      method: "GET",
+      url: `https://exercisedb.p.rapidapi.com/exercises/exercise/${parameterId}`,
+      headers: {
+        "X-RapidAPI-Key": "023f98117fmsh1c2705b6ac9a25fp11f719jsna2f7cf1eb86c",
+        "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        self.aktivitasId = response.data;
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  },
+};
+</script>

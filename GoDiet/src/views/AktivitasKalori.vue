@@ -19,48 +19,16 @@
     <div id="fiturMenu-aktivitas">
       <div class="row justify-content-center gap-3 mb-3">
         <div class="col-md-4">
-          <div class="card-aktivitas d-flex align-items-center" id="satu">
+          <div
+            v-for="aktivi in aktivitas"
+            v-bind:key="aktivi.id"
+            class="card-aktivitas d-flex align-items-center mb-3"
+            id="satu"
+          >
             <div class="card-body">
-              <RouterLink to="/aktivitasGerak">
-                <h4 class="text-white">Locat Bintang 30 Detik</h4>
+              <RouterLink v-bind:to="/aktivitasGerak/ + aktivi.id">
+                <h4 class="text-white">{{ aktivi.name }}</h4>
               </RouterLink>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card-aktivitas d-flex align-items-center" id="dua">
-            <div class="card-body">
-              <h4 class="text-white">Berlari jarak 15km</h4>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card-aktivitas d-flex align-items-center" id="tiga">
-            <div class="card-body">
-              <h4 class="text-white">Jump squat 15 menit/hari</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-aktivitas d-flex align-items-center" id="empat">
-            <div class="card-body">
-              <h4 class="text-white">Lompat Tali 10 menit/hari</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-aktivitas d-flex align-items-center" id="lima">
-            <div class="card-body">
-              <h4 class="text-white">High kness 10 menit/hari</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-aktivitas d-flex align-items-center" id="enam">
-            <div class="card-body">
-              <h4 class="text-white">Butt Kicks 15 menit/hari</h4>
             </div>
           </div>
         </div>
@@ -68,3 +36,35 @@
     </div>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      aktivitas: [],
+    };
+  },
+  mounted() {
+    let self = this;
+    const options = {
+      method: "GET",
+      url: "https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio",
+      headers: {
+        "X-RapidAPI-Key": "023f98117fmsh1c2705b6ac9a25fp11f719jsna2f7cf1eb86c",
+        "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        self.aktivitas = response.data;
+        console.log(self.aktivitas);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  },
+};
+</script>

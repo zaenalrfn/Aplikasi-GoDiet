@@ -8,9 +8,9 @@
                         <div class="d-block w-100">
                             <div class="header">
                                 <div class="row justify-content-between mt-4 pt-4">
-                                    <div class="col-2" id="title">
-                                        <img src="/img/Vector 2.png" />
-                                    </div>
+                                        <div class="col-2" id="title">
+                                            <img src="/img/Vector 2.png" />
+                                        </div>
                                     <div class="col-8" id="title">
                                         <h1 class="titleHU text-center">Tips Diet</h1>
                                     </div>
@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="d-block text-center">
-                                <img src="/img/tips1.png" alt="" width="100%">
+                                <img src="/img/tips1.png" alt="" width="254">
                             </div>
                             <p class="mt-4">
                             <p class="fw-bolder">1. Konsumsi Sarapan Kaya Protein</p>
@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="d-block text-center">
-                                <img src="/img/tips1.png" alt="" width="100%">
+                                <img src="/img/tips1.png" alt="" width="254">
                             </div>
                             <p class="mt-4">
                             <p class="fw-bolder">1. Konsumsi Sarapan Kaya Protein</p>
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="d-block text-center">
-                                <img src="/img/tips1.png" alt="" width="100%">
+                                <img src="/img/tips1.png" alt="" width="254">
                             </div>
                             <div class="mt-4">
                                 <p class="fw-bolder">1. Konsumsi Sarapan Kaya Protein</p>
