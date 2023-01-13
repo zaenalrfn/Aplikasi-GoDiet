@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import HalamanUtama from "../components/HalamanUtama.vue";
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <HalamanUtama />
   </main>
 </template>
