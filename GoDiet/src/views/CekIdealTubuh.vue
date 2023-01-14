@@ -18,28 +18,36 @@
       <div class="col cek-input border-bottom pb-2">
         <h5>Berat Badan</h5>
         <div class="input-ideal d-flex align-items-center gap-2">
-          <input type="text" id="berat-badan" />
+          <input v-model="beratBadan" type="number" id="berat-badan" />
           <p>kg</p>
         </div>
         <h5>Tinggi Badan</h5>
         <div class="input-ideal d-flex align-items-center gap-2 mt-2">
-          <input type="text" id="tinggi-badan" />
+          <input v-model="tinggiBadan" type="number" id="tinggi-badan" />
           <p>cm</p>
         </div>
         <div class="cek text-center">
-          <a href="#" class="btn text-white" onclick="Cek(true)">CEK</a>
+          <a
+            href="#"
+            @click.prevent="kalkulatorBmi"
+            class="btn text-white"
+            onclick="Cek(true)"
+            >CEK</a
+          >
         </div>
         <div class="bmi-ideal">
-          <h4>BMI(kg/m2): <span id="bmi">20.1</span></h4>
+          <h4>
+            BMI(kg/m2): <span id="bmi">{{ hasilBmi }}</span>
+          </h4>
           <img src="/img/img-bmi.png" alt="bmi" width="330" height="59.67" />
           <p id="bmi-deskripsi" class="text-center mt-3">
-            Berat badan yang sehat
+            {{ textBmi }}
           </p>
         </div>
       </div>
       <div class="col grafik-ideal-tubuh">
         <div class="grafik mt-4">
-          <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
+          <!-- <Bar id="my-chart-id" :options="chartOptions" :data="chartData" /> -->
           <div class="d-flex gap-3 align-items-center">
             <div class="d-flex align-items-center gap-3">
               <div class="Bb-icon"></div>
@@ -63,42 +71,38 @@
 <script>
 // bagian chart js
 const ctx = document.getElementById("grafikBmi");
-import { Bar } from "vue-chartjs";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
 
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
 export default {
-  name: "BarChart",
-  components: { Bar },
   data() {
     return {
-      chartData: {
-        labels: ["1", "2", "3", "4", "5", "6", "7"],
-        datasets: [
-          {
-            backgroundColor: "rgba(250, 184, 62, 0.5)",
-            borderColor: "#FAB83E",
-            borderWidth: 1,
-            data: [50, 48, 42],
-          },
-        ],
-      },
+      beratBadan: "",
+      tinggiBadan: "",
+      hasilBmi: "",
+      textBmi: "",
     };
+  },
+  methods: {
+    kalkulatorBmi() {
+      const bmi = (
+        this.beratBadan / Math.pow(this.tinggiBadan / 100, 2)
+      ).toFixed(2);
+      if (this.beratBadan === "" || this.tinggiBadan === "") {
+        alert("Inputs can not be empty");
+      } else if (this.beratBadan <= 0 || this.tinggiBadan <= 0) {
+        alert("Inputs can not be negative");
+      }
+
+      if (bmi < 18.5 && bmi > 0) {
+        this.textBmi = "Underweight";
+      } else if (bmi >= 18.5 && bmi < 24.9) {
+        this.textBmi = "Normal";
+      } else if (bmi >= 24.9 && bmi < 29.9) {
+        this.textBmi = "Overweight";
+      } else if (bmi >= 29.9) {
+        this.textBmi = "Obesity";
+      }
+      this.hasilBmi = bmi;
+    },
   },
 };
 </script>
