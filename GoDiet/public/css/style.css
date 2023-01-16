@@ -13,6 +13,11 @@
   --colorText: #939393;
   --colorAlert: #ffdfd8;
   --sizeTitle: 24px;
+  --bmicolor1: #2b94ff;
+  --bmiColor2: #00c076;
+  --bmiColor3: #fe921d;
+  --bmiColor4: #fc7419;
+  --bmiColor5: #d84023;
 }
 * {
   margin: 0;
@@ -468,7 +473,7 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
   margin-top: 15px;
   color: var(--colorText);
 }
-#my-chart-id {
+#myChart {
   height: 283.32px !important;
 }
 .input-ideal input:focus {
@@ -497,11 +502,43 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
 .bmi-ideal h4 {
   font-size: 15px;
 }
-.bmi-ideal img {
-  margin-top: 30px;
+.img-bmi {
+  width: 100%;
+  height: 40px;
+  background-color: #2b94ff;
+  background: #3f51b5;
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    #3f51b5 0%,
+    #009688 11%,
+    #4caf50 21%,
+    #8bc34a 29%,
+    #cddc39 40%,
+    #ffeb3b 51%,
+    #f44336 81%,
+    #dd2a2a 90%,
+    #b71c1c 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    #3f51b5 0%,
+    #009688 11%,
+    #4caf50 21%,
+    #8bc34a 29%,
+    #cddc39 40%,
+    #ffeb3b 51%,
+    #f44336 81%,
+    #dd2a2a 90%,
+    #b71c1c 100%
+  );
 }
-.img-bmr {
-  margin-left: -15px;
+.indikator-img-bmi {
+  width: 0%;
+  height: 40px;
+  border-right: 3px solid #000000;
+  transition: all 300ms ease;
 }
 .Bb-icon {
   width: 15px;

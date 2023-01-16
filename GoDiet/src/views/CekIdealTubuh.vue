@@ -27,11 +27,7 @@
           <p>cm</p>
         </div>
         <div class="cek text-center">
-          <a
-            href="#"
-            @click.prevent="kalkulatorBmi"
-            class="btn text-white"
-            onclick="Cek(true)"
+          <a href="#" @click.prevent="kalkulatorBmi" class="btn text-white"
             >CEK</a
           >
         </div>
@@ -39,7 +35,9 @@
           <h4>
             BMI(kg/m2): <span id="bmi">{{ hasilBmi }}</span>
           </h4>
-          <img src="/img/img-bmi.png" alt="bmi" width="330" height="59.67" />
+          <div class="img-bmi position-relative">
+            <div class="indikator-img-bmi position-absolute"></div>
+          </div>
           <p id="bmi-deskripsi" class="text-center mt-3">
             {{ textBmi }}
           </p>
@@ -47,7 +45,8 @@
       </div>
       <div class="col grafik-ideal-tubuh">
         <div class="grafik mt-4">
-          <!-- <Bar id="my-chart-id" :options="chartOptions" :data="chartData" /> -->
+          <!-- bagian chart js -->
+          <Bar id="myChart" :options="chartOptions" :data="chartData" />
           <div class="d-flex gap-3 align-items-center">
             <div class="d-flex align-items-center gap-3">
               <div class="Bb-icon"></div>
@@ -70,39 +69,103 @@
 </template>
 <script>
 // bagian chart js
-const ctx = document.getElementById("grafikBmi");
+import { Bar } from "vue-chartjs";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
+
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+);
 
 export default {
+  components: { Bar },
   data() {
     return {
       beratBadan: "",
       tinggiBadan: "",
       hasilBmi: "",
       textBmi: "",
+      bmiHistory: [],
+      bmiMp: [],
+      chartData: {
+        labels: ["January", "February", "March"],
+        datasets: [{ data: [40, 20, 12] }],
+      },
+      chartOptions: {
+        responsive: true,
+      },
     };
   },
   methods: {
     kalkulatorBmi() {
+      let InputBb = document.getElementById("berat-badan"),
+        InputTb = document.getElementById("tinggi-badan"),
+        indikatorBmi = document.querySelector(".indikator-img-bmi"),
+        textBmi = document.getElementById("bmi-deskripsi");
       const bmi = (
         this.beratBadan / Math.pow(this.tinggiBadan / 100, 2)
       ).toFixed(2);
       if (this.beratBadan === "" || this.tinggiBadan === "") {
-        alert("Inputs can not be empty");
+        InputBb.classList.add("input-alert");
+        InputTb.classList.add("input-alert");
       } else if (this.beratBadan <= 0 || this.tinggiBadan <= 0) {
         alert("Inputs can not be negative");
+      } else {
+        InputBb.classList.remove("input-alert");
+        InputTb.classList.remove("input-alert");
       }
 
       if (bmi < 18.5 && bmi > 0) {
         this.textBmi = "Underweight";
+        textBmi.style.color = "#3f51b5";
       } else if (bmi >= 18.5 && bmi < 24.9) {
         this.textBmi = "Normal";
+        textBmi.style.color = "#74dd78";
       } else if (bmi >= 24.9 && bmi < 29.9) {
         this.textBmi = "Overweight";
+        textBmi.style.color = "#f44336";
       } else if (bmi >= 29.9) {
         this.textBmi = "Obesity";
+        textBmi.style.color = "#b71c1c";
+      }
+      if (bmi <= 15) {
+        indikatorBmi.style.width = "0%";
+      } else if (bmi >= 29.9) {
+        indikatorBmi.style.width = "100%";
+      } else {
+        indikatorBmi.style.width = ((bmi - 15) * 100) / 35 + "%";
       }
       this.hasilBmi = bmi;
+
+      // bagian history bmi
+      this.bmiHistory.push(this.beratBadan);
+      if (this.bmiHistory.length > 7) {
+        this.bmiHistory.pop();
+      }
+      const parsed = JSON.stringify(this.bmiHistory);
+      localStorage.setItem("history-bmi", parsed);
     },
+  },
+  mounted() {
+    if (localStorage.getItem("history-bmi")) {
+      try {
+        this.bmiMp = JSON.parse(localStorage.getItem("history-bmi"));
+      } catch (e) {
+        localStorage.removeItem("history-bmi");
+      }
+    }
   },
 };
 </script>
