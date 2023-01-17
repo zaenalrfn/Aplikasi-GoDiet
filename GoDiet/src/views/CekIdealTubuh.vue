@@ -46,7 +46,7 @@
       <div class="col grafik-ideal-tubuh">
         <div class="grafik mt-4">
           <!-- bagian chart js -->
-          <Bar id="myChart" :options="chartOptions" :data="chartData" />
+          <canvas id="myChart"></canvas>
           <div class="d-flex gap-3 align-items-center">
             <div class="d-flex align-items-center gap-3">
               <div class="Bb-icon"></div>
@@ -69,28 +69,8 @@
 </template>
 <script>
 // bagian chart js
-import { Bar } from "vue-chartjs";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
-
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
-
+import Chart from "chart.js/auto";
 export default {
-  components: { Bar },
   data() {
     return {
       beratBadan: "",
@@ -99,13 +79,6 @@ export default {
       textBmi: "",
       bmiHistory: [],
       bmiMp: [],
-      chartData: {
-        labels: ["January", "February", "March"],
-        datasets: [{ data: [40, 20, 12] }],
-      },
-      chartOptions: {
-        responsive: true,
-      },
     };
   },
   methods: {
@@ -156,16 +129,48 @@ export default {
       }
       const parsed = JSON.stringify(this.bmiHistory);
       localStorage.setItem("history-bmi", parsed);
+
+      const dataG = () => {};
     },
   },
   mounted() {
+    let gr = null;
     if (localStorage.getItem("history-bmi")) {
-      try {
-        this.bmiMp = JSON.parse(localStorage.getItem("history-bmi"));
-      } catch (e) {
-        localStorage.removeItem("history-bmi");
-      }
+      this.bmiMp = JSON.parse(localStorage.getItem("history-bmi"));
+      gr = this.bmiMp;
     }
+    let mchart = document.getElementById("myChart");
+    const chart = new Chart(mchart, {
+      type: "bar",
+      data: {
+        labels: [
+          "Minggu",
+          "Senin",
+          "Selasa",
+          "Rabu",
+          "Kamis",
+          "Jumat",
+          "Sabtu",
+        ],
+        datasets: [
+          {
+            label: "# of Votes",
+            data: [],
+            borderWidth: 1,
+            backgroundColor: "",
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+    chart.data.datasets[0].data = gr;
+    chart.update();
   },
 };
 </script>
