@@ -31,7 +31,7 @@
             >CEK</a
           >
         </div>
-        <div class="bmi-ideal">
+        <div class="bmi-ideal mt-5">
           <h4>
             BMI(kg/m2): <span id="bmi">{{ hasilBmi }}</span>
           </h4>
@@ -100,34 +100,35 @@ export default {
       } else {
         InputBb.classList.remove("input-alert");
         InputTb.classList.remove("input-alert");
+
+        if (this.bmi < 18.5 && this.bmi > 0) {
+          this.bmiTextD = "Underweight";
+          textBmiD.style.color = "#3f51b5";
+        } else if (this.bmi >= 18.5 && this.bmi < 24.9) {
+          this.bmiTextD = "Normal";
+          textBmiD.style.color = "#74dd78";
+        } else if (this.bmi >= 24.9 && this.bmi < 29.9) {
+          this.bmiTextD = "Overweight";
+          textBmiD.style.color = "#f44336";
+        } else if (this.bmi >= 29.9) {
+          this.bmiTextD = "Obesity";
+          textBmiD.style.color = "#b71c1c";
+        }
+        if (this.bmi <= 15) {
+          indikatorBmi.style.width = "0%";
+        } else if (this.bmi >= 29.9) {
+          indikatorBmi.style.width = "100%";
+        } else {
+          indikatorBmi.style.width = ((this.bmi - 15) * 100) / 35 + "%";
+        }
+        this.hasilBmi = this.bmi;
+        // bagian history bmi
+        this.bmiHistory.push(this.beratBadan);
+        if (this.bmiHistory.length > 7) {
+          this.bmiHistory.pop();
+        }
       }
 
-      if (this.bmi < 18.5 && this.bmi > 0) {
-        this.bmiTextD = "Underweight";
-        textBmiD.style.color = "#3f51b5";
-      } else if (this.bmi >= 18.5 && this.bmi < 24.9) {
-        this.bmiTextD = "Normal";
-        textBmiD.style.color = "#74dd78";
-      } else if (this.bmi >= 24.9 && this.bmi < 29.9) {
-        this.bmiTextD = "Overweight";
-        textBmiD.style.color = "#f44336";
-      } else if (this.bmi >= 29.9) {
-        this.bmiTextD = "Obesity";
-        textBmiD.style.color = "#b71c1c";
-      }
-      if (this.bmi <= 15) {
-        indikatorBmi.style.width = "0%";
-      } else if (this.bmi >= 29.9) {
-        indikatorBmi.style.width = "100%";
-      } else {
-        indikatorBmi.style.width = ((this.bmi - 15) * 100) / 35 + "%";
-      }
-      this.hasilBmi = this.bmi;
-      // bagian history bmi
-      this.bmiHistory.push(this.beratBadan);
-      if (this.bmiHistory.length > 7) {
-        this.bmiHistory.pop();
-      }
       const parsedBbHistory = JSON.stringify(this.bmiHistory);
       const parsedBmiPr = JSON.stringify(this.tinggiBadan);
       localStorage.setItem("history-bb", parsedBbHistory);

@@ -53,11 +53,15 @@
           >
         </div>
         <div class="d-flex justify-content-center align-items-center mt-3 mb-3">
-          <div class="bmi-ideal text-start">
-            <h4>BMR Anda adalah : <span id="bmi" class="hasil-bmr"></span></h4>
+          <div class="bmr-ideal text-start">
+            <h4>
+              BMR Anda adalah :
+              <span id="bmi" class="hasil-bmr">{{ bmr }}</span>
+            </h4>
             <h4>
               Anda membutuhkan :
-              <span id="bmr-hari" class="mt-2"></span> kalori/hari
+              <span id="bmr-hari" class="mt-2">{{ bmrPerHari }}</span>
+              kalori/hari
             </h4>
           </div>
         </div>
@@ -74,15 +78,15 @@ export default {
       tB_bmr: "",
       u_bmr: "",
       bmr: "",
+      bmrPerHari: "",
     };
   },
   methods: {
     kalkulatorBmr() {
-      let hasilBmr = document.querySelector(".hasil-bmr"),
+      let hasilBmr = null,
         InputBb = document.getElementById("berat-badan"),
         InputTb = document.getElementById("tinggi-badan"),
         InputU = document.getElementById("umur"),
-        bmrPerHari = document.getElementById("bmr-hari"),
         bmrOption = document.querySelector("#form-aktivitas").value,
         beratBadanBmr = 9.6 * this.bB_bmr,
         tinggiBadanBmr = 1.8 * this.tB_bmr,
@@ -93,21 +97,21 @@ export default {
         InputTb.classList.add("input-alert");
         InputU.classList.add("input-alert");
       } else {
-        this.bmr = 655 + beratBadanBmr + tinggiBadanBmr - umurBmr;
-        hasilBmr.textContent = Math.round(this.bmr * 100) / 100.0;
+        hasilBmr = 655 + beratBadanBmr + tinggiBadanBmr - umurBmr;
+        this.bmr = Math.round(hasilBmr * 100) / 100.0;
 
         if (bmrOption == "Sedikit/tidak ada olahraga") {
-          bmrPerHari.textContent = Math.round(this.bmr * 1.2);
+          this.bmrPerHari = Math.round(this.bmr * 1.2);
         } else if (bmrOption == "Latihan ringan") {
-          bmrPerHari.textContent = Math.round(this.bmr * 1.375);
+          this.bmrPerHari = Math.round(this.bmr * 1.375);
         } else if (bmrOption == "Olahraga sedang (3-5 hari/minggu)") {
-          bmrPerHari.textContent = Math.round(this.bmr * 1.55);
+          this.bmrPerHari = Math.round(this.bmr * 1.55);
         } else if (bmrOption == "Sangat aktif (6-7 hari/minggu)") {
-          bmrPerHari.textContent = Math.round(this.bmr * 1.725);
+          this.bmrPerHari = Math.round(this.bmr * 1.725);
         } else if (
           bmrOption == "Ekstra aktif (pekerjaan sangat aktif & fisik)"
         ) {
-          bmrPerHari.textContent = Math.round(this.bmr * 1.9);
+          this.bmrPerHari = Math.round(this.bmr * 1.9);
         }
         // localStorage.setItem("histori-bmr", this.bmr);
         InputBb.classList.remove("input-alert");
@@ -117,13 +121,17 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.bmr) {
+    if (localStorage.bmr || localStorage.bmrPerHari) {
       this.bmr = localStorage.bmr;
+      this.bmrPerHari = localStorage.bmrPerHari;
     }
   },
   watch: {
     bmr(newBmr) {
       localStorage.bmr = newBmr;
+    },
+    bmrPerHari(newBmrPerHari) {
+      localStorage.bmrPerHari = newBmrPerHari;
     },
   },
 };

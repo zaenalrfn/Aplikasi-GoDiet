@@ -503,12 +503,15 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
 #bmi {
   color: var(--colorHijau);
 }
-.bmi-ideal {
+.bmr-ideal {
   width: 290px;
   padding: 40px 15px;
   background-color: var(--colorInput);
   border-radius: 15px;
   border: 1px solid var(--colorBiru);
+}
+.bmr-ideal h4 {
+  font-size: 16px;
 }
 #bmi-deskripsi {
   color: var(--colorHijau);
