@@ -18,51 +18,47 @@
       <div class="col cek-input">
         <h5>Berat Badan</h5>
         <div class="input-ideal d-flex align-items-center gap-2">
-          <input type="text" id="berat-badan" v-model="bB_bmr" />
+          <input type="text" id="berat-badan" v-model="bB_bmr" required />
           <p>kg</p>
         </div>
         <h5>Tinggi Badan</h5>
         <div class="input-ideal d-flex align-items-center gap-2 mt-2">
-          <input type="text" id="tinggi-badan" v-model="tB_bmr" />
+          <input type="text" id="tinggi-badan" v-model="tB_bmr" required />
           <p>cm</p>
         </div>
         <h5>Umur</h5>
         <div class="input-ideal d-flex align-items-center gap-2 mt-2">
-          <input type="text" id="umur" v-model="u_bmr" />
+          <input type="text" id="umur" v-model="u_bmr" required />
+        </div>
+        <div class="input-ideal d-flex align-items-center mt-4">
+          <select class="form-select" required id="form-aktivitas">
+            <option selected value="Sedikit/tidak ada olahraga">
+              Sedikit/tidak ada olahraga
+            </option>
+            <option value="Latihan ringan">Latihan ringan</option>
+            <option value="Olahraga sedang (3-5 hari/minggu)">
+              Olahraga sedang (3-5 hari/minggu)
+            </option>
+            <option value="Sangat aktif (6-7 hari/minggu)">
+              Sangat aktif (6-7 hari/minggu)
+            </option>
+            <option value="Ekstra aktif (pekerjaan sangat aktif & fisik)">
+              Ekstra aktif (pekerjaan sangat aktif & fisik)
+            </option>
+          </select>
         </div>
         <div class="cek text-center border-bottom pb-5">
           <a href="#" class="btn text-white" @click.prevent="kalkulatorBmr"
             >CEK</a
           >
         </div>
-        <div class="bmi-ideal text-center">
-          <h4>
-            BMR Anda adalah<span id="bmi" class="hasil-bmr"> ......... </span
-            >kcal
-          </h4>
-          <!-- <img
-            src="/img/img-kebutuhan-kalori.png"
-            alt="bmr"
-            width="340"
-            class="img-bmr"
-          /> -->
-          <div class="d-flex justify-content-center mt-5 mb-3">
-            <div class="bmr-wrapper">
-              <div
-                role="progressbar"
-                aria-valuenow="75"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <img
-                  src="img/balanced-diet 1.png"
-                  alt="balanced"
-                  width="80"
-                  height="80"
-                  class="img-bmr"
-                />
-              </div>
-            </div>
+        <div class="d-flex justify-content-center align-items-center mt-3 mb-3">
+          <div class="bmi-ideal text-start">
+            <h4>BMR Anda adalah : <span id="bmi" class="hasil-bmr"></span></h4>
+            <h4>
+              Anda membutuhkan :
+              <span id="bmr-hari" class="mt-2"></span> kalori/hari
+            </h4>
           </div>
         </div>
       </div>
@@ -74,38 +70,60 @@
 export default {
   data() {
     return {
-      bB_bmr: null,
-      tB_bmr: null,
-      u_bmr: null,
+      bB_bmr: "",
+      tB_bmr: "",
+      u_bmr: "",
+      bmr: "",
     };
   },
   methods: {
     kalkulatorBmr() {
-      let speed = document.querySelector("[role=progressbar]::after"),
-        hasilBmr = document.querySelector(".hasil-bmr"),
+      let hasilBmr = document.querySelector(".hasil-bmr"),
+        InputBb = document.getElementById("berat-badan"),
+        InputTb = document.getElementById("tinggi-badan"),
+        InputU = document.getElementById("umur"),
+        bmrPerHari = document.getElementById("bmr-hari"),
+        bmrOption = document.querySelector("#form-aktivitas").value,
         beratBadanBmr = 9.6 * this.bB_bmr,
         tinggiBadanBmr = 1.8 * this.tB_bmr,
         umurBmr = 4.7 * this.u_bmr;
 
-      let bmr = 655 + beratBadanBmr + tinggiBadanBmr - umurBmr;
-      hasilBmr.textContent = Math.round(bmr * 100) / 100.0;
-      localStorage.setItem("histori-bmr", bmr);
-      if (this.bB_bmr == 40) {
-        if (this.u_bmr >= 10 && this.u_bmr <= 18) {
-          if (bmr >= 1224 && bmr < 1291) {
-            speed.style.width = "100%";
-            alert("bmr normal");
-          } else {
-            alert("bmr kurang");
-          }
-        } else {
-          alert("umur kurang");
-        }
-      } else if (this.bB_bmr > 40 && this.bB_bmr <= 45) {
-        //
+      if (this.bB_bmr === "" || this.tB_bmr === "" || this.u_bmr === "") {
+        InputBb.classList.add("input-alert");
+        InputTb.classList.add("input-alert");
+        InputU.classList.add("input-alert");
       } else {
-        alert("rendah");
+        this.bmr = 655 + beratBadanBmr + tinggiBadanBmr - umurBmr;
+        hasilBmr.textContent = Math.round(this.bmr * 100) / 100.0;
+
+        if (bmrOption == "Sedikit/tidak ada olahraga") {
+          bmrPerHari.textContent = Math.round(this.bmr * 1.2);
+        } else if (bmrOption == "Latihan ringan") {
+          bmrPerHari.textContent = Math.round(this.bmr * 1.375);
+        } else if (bmrOption == "Olahraga sedang (3-5 hari/minggu)") {
+          bmrPerHari.textContent = Math.round(this.bmr * 1.55);
+        } else if (bmrOption == "Sangat aktif (6-7 hari/minggu)") {
+          bmrPerHari.textContent = Math.round(this.bmr * 1.725);
+        } else if (
+          bmrOption == "Ekstra aktif (pekerjaan sangat aktif & fisik)"
+        ) {
+          bmrPerHari.textContent = Math.round(this.bmr * 1.9);
+        }
+        // localStorage.setItem("histori-bmr", this.bmr);
+        InputBb.classList.remove("input-alert");
+        InputTb.classList.remove("input-alert");
+        InputU.classList.remove("input-alert");
       }
+    },
+  },
+  mounted() {
+    if (localStorage.bmr) {
+      this.bmr = localStorage.bmr;
+    }
+  },
+  watch: {
+    bmr(newBmr) {
+      localStorage.bmr = newBmr;
     },
   },
 };

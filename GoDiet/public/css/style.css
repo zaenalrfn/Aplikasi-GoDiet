@@ -464,6 +464,17 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
   height: 40px;
   padding-left: 18px;
 }
+.input-ideal .form-select {
+  position: relative;
+  width: 288px;
+  border-radius: 15px;
+  border: none;
+  background-color: var(--colorInput);
+  height: 40px;
+}
+.input-ideal option {
+  font-size: 9px;
+}
 .input-ideal .input-alert {
   background-color: var(--colorAlert);
   outline: 1px solid var(--colorMerah);
@@ -493,7 +504,11 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
   color: var(--colorHijau);
 }
 .bmi-ideal {
-  margin-top: 40px;
+  width: 290px;
+  padding: 40px 15px;
+  background-color: var(--colorInput);
+  border-radius: 15px;
+  border: 1px solid var(--colorBiru);
 }
 #bmi-deskripsi {
   color: var(--colorHijau);
@@ -501,6 +516,9 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
 }
 .bmi-ideal h4 {
   font-size: 15px;
+}
+#bmr-hari {
+  color: var(--colorOren);
 }
 .img-bmi {
   width: 100%;
@@ -773,7 +791,7 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
   }
 } */
 
-@property --percentage {
+/* @property --percentage {
   syntax: "<number>";
   inherits: true;
   initial-value: 0;
@@ -834,5 +852,5 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
       #0000 92deg
     );
   transform-origin: 83.33333% 50%;
-  /* transform: rotate(calc(var(--value) * 5deg / 100)); */
-}
+  transform: rotate(calc(var(--value) * 5deg / 100)); 
+} */
