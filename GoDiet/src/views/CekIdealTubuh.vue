@@ -39,7 +39,7 @@
             <div class="indikator-img-bmi position-absolute"></div>
           </div>
           <p id="bmi-deskripsi" class="text-center mt-3">
-            {{ textBmi }}
+            {{ bmiTextD }}
           </p>
         </div>
       </div>
@@ -76,9 +76,11 @@ export default {
       beratBadan: "",
       tinggiBadan: "",
       hasilBmi: "",
-      textBmi: "",
       bmiHistory: [],
       bmiMp: [],
+      bmiCek: null,
+      bmi: null,
+      bmiTextD: "",
     };
   },
   methods: {
@@ -86,8 +88,8 @@ export default {
       let InputBb = document.getElementById("berat-badan"),
         InputTb = document.getElementById("tinggi-badan"),
         indikatorBmi = document.querySelector(".indikator-img-bmi"),
-        textBmi = document.getElementById("bmi-deskripsi");
-      const bmi = (
+        textBmiD = document.getElementById("bmi-deskripsi");
+      this.bmi = (
         this.beratBadan / Math.pow(this.tinggiBadan / 100, 2)
       ).toFixed(2);
       if (this.beratBadan === "" || this.tinggiBadan === "") {
@@ -100,44 +102,47 @@ export default {
         InputTb.classList.remove("input-alert");
       }
 
-      if (bmi < 18.5 && bmi > 0) {
-        this.textBmi = "Underweight";
-        textBmi.style.color = "#3f51b5";
-      } else if (bmi >= 18.5 && bmi < 24.9) {
-        this.textBmi = "Normal";
-        textBmi.style.color = "#74dd78";
-      } else if (bmi >= 24.9 && bmi < 29.9) {
-        this.textBmi = "Overweight";
-        textBmi.style.color = "#f44336";
-      } else if (bmi >= 29.9) {
-        this.textBmi = "Obesity";
-        textBmi.style.color = "#b71c1c";
+      if (this.bmi < 18.5 && this.bmi > 0) {
+        this.bmiTextD = "Underweight";
+        textBmiD.style.color = "#3f51b5";
+      } else if (this.bmi >= 18.5 && this.bmi < 24.9) {
+        this.bmiTextD = "Normal";
+        textBmiD.style.color = "#74dd78";
+      } else if (this.bmi >= 24.9 && this.bmi < 29.9) {
+        this.bmiTextD = "Overweight";
+        textBmiD.style.color = "#f44336";
+      } else if (this.bmi >= 29.9) {
+        this.bmiTextD = "Obesity";
+        textBmiD.style.color = "#b71c1c";
       }
-      if (bmi <= 15) {
+      if (this.bmi <= 15) {
         indikatorBmi.style.width = "0%";
-      } else if (bmi >= 29.9) {
+      } else if (this.bmi >= 29.9) {
         indikatorBmi.style.width = "100%";
       } else {
-        indikatorBmi.style.width = ((bmi - 15) * 100) / 35 + "%";
+        indikatorBmi.style.width = ((this.bmi - 15) * 100) / 35 + "%";
       }
-      this.hasilBmi = bmi;
-
+      this.hasilBmi = this.bmi;
       // bagian history bmi
       this.bmiHistory.push(this.beratBadan);
       if (this.bmiHistory.length > 7) {
         this.bmiHistory.pop();
       }
-      const parsed = JSON.stringify(this.bmiHistory);
-      localStorage.setItem("history-bmi", parsed);
-
-      const dataG = () => {};
+      const parsedBbHistory = JSON.stringify(this.bmiHistory);
+      const parsedBmiPr = JSON.stringify(this.tinggiBadan);
+      localStorage.setItem("history-bb", parsedBbHistory);
+      localStorage.setItem("Bb-profil", parsedBmiPr);
     },
   },
   mounted() {
     let gr = null;
-    if (localStorage.getItem("history-bmi")) {
-      this.bmiMp = JSON.parse(localStorage.getItem("history-bmi"));
+    if (localStorage.getItem("history-bb")) {
+      this.bmiMp = JSON.parse(localStorage.getItem("history-bb"));
       gr = this.bmiMp;
+    }
+    if (localStorage.hasilBmi && localStorage.bmiTextD) {
+      this.hasilBmi = localStorage.hasilBmi;
+      this.bmiTextD = localStorage.bmiTextD;
     }
     let mchart = document.getElementById("myChart");
     const chart = new Chart(mchart, {
@@ -171,6 +176,14 @@ export default {
     });
     chart.data.datasets[0].data = gr;
     chart.update();
+  },
+  watch: {
+    hasilBmi(newHasil) {
+      localStorage.hasilBmi = newHasil;
+    },
+    bmiTextD(newBmiTextD) {
+      localStorage.bmiTextD = newBmiTextD;
+    },
   },
 };
 </script>

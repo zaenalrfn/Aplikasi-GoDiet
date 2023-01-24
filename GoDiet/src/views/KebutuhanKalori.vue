@@ -40,12 +40,30 @@
             BMR Anda adalah<span id="bmi" class="hasil-bmr"> ......... </span
             >kcal
           </h4>
-          <img
+          <!-- <img
             src="/img/img-kebutuhan-kalori.png"
             alt="bmr"
             width="340"
             class="img-bmr"
-          />
+          /> -->
+          <div class="d-flex justify-content-center mt-5 mb-3">
+            <div class="bmr-wrapper">
+              <div
+                role="progressbar"
+                aria-valuenow="75"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <img
+                  src="img/balanced-diet 1.png"
+                  alt="balanced"
+                  width="80"
+                  height="80"
+                  class="img-bmr"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -63,13 +81,31 @@ export default {
   },
   methods: {
     kalkulatorBmr() {
-      let hasilBmr = document.querySelector(".hasil-bmr"),
+      let speed = document.querySelector("[role=progressbar]::after"),
+        hasilBmr = document.querySelector(".hasil-bmr"),
         beratBadanBmr = 9.6 * this.bB_bmr,
         tinggiBadanBmr = 1.8 * this.tB_bmr,
         umurBmr = 4.7 * this.u_bmr;
 
       let bmr = 655 + beratBadanBmr + tinggiBadanBmr - umurBmr;
       hasilBmr.textContent = Math.round(bmr * 100) / 100.0;
+      localStorage.setItem("histori-bmr", bmr);
+      if (this.bB_bmr == 40) {
+        if (this.u_bmr >= 10 && this.u_bmr <= 18) {
+          if (bmr >= 1224 && bmr < 1291) {
+            speed.style.width = "100%";
+            alert("bmr normal");
+          } else {
+            alert("bmr kurang");
+          }
+        } else {
+          alert("umur kurang");
+        }
+      } else if (this.bB_bmr > 40 && this.bB_bmr <= 45) {
+        //
+      } else {
+        alert("rendah");
+      }
     },
   },
 };
