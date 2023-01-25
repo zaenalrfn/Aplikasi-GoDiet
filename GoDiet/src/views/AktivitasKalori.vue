@@ -27,7 +27,7 @@
           >
             <div class="card-body">
               <RouterLink v-bind:to="/aktivitasGerak/ + aktivi.id">
-                <h4 class="text-white">{{ aktivi.name }}</h4>
+                <h4 class="text-white" @click="Counter_1">{{ aktivi.name }}</h4>
               </RouterLink>
             </div>
           </div>
@@ -39,11 +39,18 @@
 
 <script>
 import axios from "axios";
+import counter from "../views/ben.js";
 export default {
   data() {
     return {
       aktivitas: [],
+      counterAk: null,
     };
+  },
+  methods: {
+    Counter_1() {
+      counter();
+    },
   },
   mounted() {
     let self = this;

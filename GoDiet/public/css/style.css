@@ -635,27 +635,7 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
 }
 
 #satu {
-  background-color: var(--colorMerah);
-}
-
-#dua {
-  background-color: var(--colorOren);
-}
-
-#tiga {
-  background-color: var(--colorKrem);
-}
-
-#empat {
-  background-color: var(--colorHijau);
-}
-
-#lima {
-  background-color: var(--colorDongker);
-}
-
-#enam {
-  background-color: var(--colorBiruMuda);
+  background-color: var(--colorBiru);
 }
 
 /* aktivitas kalori */
@@ -681,7 +661,8 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(6px);
-  display: none;
+  /* display: none; */
+  display: flex;
 }
 .popGerak .boxGerak {
   width: 322px;

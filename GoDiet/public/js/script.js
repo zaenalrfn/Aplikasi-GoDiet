@@ -10,12 +10,12 @@ const Tidak = () => {
   document.body.style.overflow = "";
 };
 // BAGIAN GERAK AKTIVITAS
-let gerakKembali = document.getElementById("gerak-kembali"),
-  popGerak = document.querySelector(".popGerak");
-gerakKembali.onclick = () => {
-  popGerak.style.display = "none";
-  document.body.style.overflow = "";
-};
+// let gerakKembali = document.getElementById("gerak-kembali"),
+//   popGerak = document.querySelector(".popGerak");
+// gerakKembali.onclick = () => {
+//   popGerak.style.display = "none";
+//   document.body.style.overflow = "";
+// };
 const HitungKalori = () => {
   popGerak.style.display = "flex";
   document.body.style.overflow = "hidden";
