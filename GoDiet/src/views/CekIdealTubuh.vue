@@ -102,16 +102,16 @@ export default {
         InputTb.classList.remove("input-alert");
 
         if (this.bmi < 18.5 && this.bmi > 0) {
-          this.bmiTextD = "Underweight";
+          this.bmiTextD = "Berat badan kurang";
           textBmiD.style.color = "#3f51b5";
         } else if (this.bmi >= 18.5 && this.bmi < 24.9) {
           this.bmiTextD = "Normal";
           textBmiD.style.color = "#74dd78";
         } else if (this.bmi >= 24.9 && this.bmi < 29.9) {
-          this.bmiTextD = "Overweight";
+          this.bmiTextD = "Kegemukan";
           textBmiD.style.color = "#f44336";
         } else if (this.bmi >= 29.9) {
-          this.bmiTextD = "Obesity";
+          this.bmiTextD = "Obesitas";
           textBmiD.style.color = "#b71c1c";
         }
         if (this.bmi <= 15) {
@@ -130,7 +130,7 @@ export default {
       }
 
       const parsedBbHistory = JSON.stringify(this.bmiHistory);
-      const parsedBmiPr = JSON.stringify(this.tinggiBadan);
+      const parsedBmiPr = JSON.stringify(this.beratBadan);
       localStorage.setItem("history-bb", parsedBbHistory);
       localStorage.setItem("Bb-profil", parsedBmiPr);
     },

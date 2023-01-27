@@ -17,8 +17,28 @@
     </div>
 
     <div id="fiturMenu-aktivitas">
-      <div class="row justify-content-center gap-3 mb-3">
-        <div class="col-md-4">
+      <div class="row justify-content-center mb-3">
+        <div class="card aktivitas">
+          <img src="..." class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <!-- <div class="col-md-4">
+          <div class="card-aktivitas d-flex align-items-center mb-3" id="satu">
+            <div class="card-body">
+              <RouterLink to="/aktivitasGerak">
+                <h4 class="text-white">sfddf</h4>
+              </RouterLink>
+            </div>
+          </div>
+        </div> -->
+        <!-- <div class="col-md-4">
           <div
             v-for="aktivi in aktivitas"
             v-bind:key="aktivi.id"
@@ -27,11 +47,11 @@
           >
             <div class="card-body">
               <RouterLink v-bind:to="/aktivitasGerak/ + aktivi.id">
-                <h4 class="text-white" @click="Counter_1">{{ aktivi.name }}</h4>
+                <h4 class="text-white">{{ aktivi.name }}</h4>
               </RouterLink>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -39,39 +59,31 @@
 
 <script>
 import axios from "axios";
-import counter from "../views/ben.js";
+// import counter from "../views/ben.js";
 export default {
   data() {
     return {
       aktivitas: [],
-      counterAk: null,
+      counterAk: 0,
     };
-  },
-  methods: {
-    Counter_1() {
-      counter();
-    },
   },
   mounted() {
-    let self = this;
-    const options = {
-      method: "GET",
-      url: "https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio",
-      headers: {
-        "X-RapidAPI-Key": "023f98117fmsh1c2705b6ac9a25fp11f719jsna2f7cf1eb86c",
-        "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        self.aktivitas = response.data;
-        console.log(self.aktivitas);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    // let self = this;
+    // const options = {
+    //   method: "GET",
+    //   url: `https://zylalabs.com/api/392/exercise+database+api/310/list+exercise+by+body+part?bodypart=cardio`,
+    //   headers: {
+    //     Authorization: "Bearer 639|dwzLZuBqnS0ZgiGLjMBa1VTPpHoFYnVBlgxwpLQa",
+    //   },
+    // };
+    // axios(options)
+    //   .then(function (response) {
+    //     self.aktivitas = response.data;
+    //     console.log(self.aktivitas);
+    //   })
+    //   .catch(function (error) {
+    //     console.error(error);
+    //   });
   },
 };
 </script>

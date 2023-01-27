@@ -47,6 +47,7 @@ const router = createRouter({
       path: "/aktivitasGerak/:id",
       name: "aktivitasGerak",
       component: AktivitasGerak,
+      props: true,
     },
     {
       path: "/menuDiet",

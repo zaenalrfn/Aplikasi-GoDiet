@@ -19,11 +19,11 @@
       <div class="d-flex justify-content-center gap-5 mt-2">
         <div>
           <p class="p-gerak">Kalori</p>
-          <h4 class="h4-gerak">5.9 Kkal</h4>
+          <h4 class="h4-gerak">{{ kk }} Kkal</h4>
         </div>
         <div>
           <p class="p-gerak">Durasi</p>
-          <h4 class="h4-gerak">90 Detik</h4>
+          <h4 class="h4-gerak">{{ menit }} : {{ detik }}</h4>
         </div>
       </div>
     </div>
@@ -34,5 +34,29 @@
 export default {
   name: "popUpGerak",
   props: ["TogglePopup"],
+  data() {
+    return {
+      kk: null,
+      detik: null,
+      menit: null,
+    };
+  },
+  mounted() {
+    if (
+      localStorage.getItem("kalori-keluar") ||
+      localStorage.getItem("detik") ||
+      localStorage.getItem("menit")
+    ) {
+      try {
+        this.kk = JSON.parse(localStorage.getItem("kalori-keluar"));
+        this.detik = JSON.parse(localStorage.getItem("detik"));
+        this.menit = JSON.parse(localStorage.getItem("menit"));
+      } catch (e) {
+        localStorage.removeItem("kalori-keluar");
+        localStorage.removeItem("detik");
+        localStorage.removeItem("menit");
+      }
+    }
+  },
 };
 </script>

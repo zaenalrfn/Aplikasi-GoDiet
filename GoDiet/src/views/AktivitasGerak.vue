@@ -4,7 +4,7 @@
       <div class="row justify-content-between mt-5 mb-4">
         <div class="col" id="title">
           <RouterLink to="/aktivitasKalori">
-            <img src="/img/Vector 2.png" />
+            <img src="/img/Vector 2.png" @click="ResetCounter" />
           </RouterLink>
           <div class="d-block text-center">
             <img
@@ -17,7 +17,7 @@
           <div>
             <h2>
               {{ aktivitasId.name }} <br />
-              30 Detik {{ waktu }}<span class="text-warning">x 3</span>
+              30 Detik<span class="text-warning">x 3</span>
             </h2>
           </div>
         </div>
@@ -58,7 +58,6 @@
 <script>
 import { ref } from "vue";
 import axios from "axios";
-import counter from "../views/ben.js";
 import popUpAktivitasGerak from "../components/popUpAktivitasGerak.vue";
 export default {
   components: {
@@ -70,36 +69,68 @@ export default {
     });
     const TogglePopup = (trigger) => {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger];
+      // <!-- Total Kalori yang Dibakar = Durasi (menit) x [METs x 3,5 x Berat Badan (kg)] / 200 -->
+      this.Hitung;
     };
     return {
       aktivitasId: [],
+      detik: 0,
       popupTriggers,
       TogglePopup,
-      waktu: counter(),
+      clear: null,
+      kaloriKeluar: null,
+      bbGerak: null,
+      menit: null,
+      detikMenit: null,
     };
   },
   mounted() {
+    this.Counter;
     let self = this;
     let parameterId = this.$route.params.id;
     const options = {
       method: "GET",
-      url: `https://exercisedb.p.rapidapi.com/exercises/exercise/${parameterId}`,
+      url: `https://zylalabs.com/api/392/exercise+database+api/310/list+exercise+by+body+part?bodypart=${parameterId}`,
       headers: {
-        "X-RapidAPI-Key": "023f98117fmsh1c2705b6ac9a25fp11f719jsna2f7cf1eb86c",
-        "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
+        Authorization: "Bearer 639|dwzLZuBqnS0ZgiGLjMBa1VTPpHoFYnVBlgxwpLQa",
       },
     };
 
-    axios
-      .request(options)
+    axios(options)
       .then(function (response) {
         self.aktivitasId = response.data;
       })
       .catch(function (error) {
         console.error(error);
       });
+
+    if (localStorage.getItem("Bb-profil")) {
+      this.bbGerak = JSON.parse(localStorage.getItem("Bb-profil"));
+    }
+  },
+  computed: {
+    Counter() {
+      this.clear = setInterval(() => {
+        this.detik++;
+        console.log(this.detik);
+        this.menit = Math.floor(this.detik / 60);
+        this.detikMenit = this.detik % 60;
+      }, 1000);
+    },
+    Hitung() {
+      this.kaloriKeluar = Math.round(
+        (this.menit * (3.5 * 3.5 * this.bbGerak)) / 200
+      );
+      console.log(this.kaloriKeluar);
+      localStorage.setItem("kalori-keluar", this.kaloriKeluar);
+      localStorage.setItem("detik", this.detikMenit);
+      localStorage.setItem("menit", this.menit);
+    },
+  },
+  methods: {
+    ResetCounter() {
+      clearInterval(this.clear);
+    },
   },
 };
 </script>
-
-<!-- Total Kalori yang Dibakar = Durasi (menit) x [METs x 3,5 x Berat Badan (kg)] / 200 -->

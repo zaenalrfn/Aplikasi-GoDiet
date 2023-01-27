@@ -85,10 +85,20 @@
       </div>
     </div>
   </div>
+
+  <!-- popup -->
+  <!-- bagian popup-cek-halaman-utama -->
+  <popUpHU />
 </template>
 
 <script>
+import popUpHU from "../components/popUpHalamanUtama.vue";
+// import popupCek from "../components/popUpHalamanUtama.vue";
+// import cek from "../components/popUpHalamanUtama.vue";
 export default {
   name: "HalamanUtama",
+  components: {
+    popUpHU,
+  },
 };
 </script>

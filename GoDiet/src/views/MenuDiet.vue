@@ -29,7 +29,7 @@
           <RouterLink to="/menuDietPagi">
             <div class="card" id="tipsDiet">
               <div class="d-flex justify-content-center">
-                <img src="/img/breakfast 1.png" alt="2" />
+                <img src="/img/breakfast 1.png" alt="1" />
                 <div class="card-body pt-4">
                   <h2 class="text-white pt-4">MENU PAGI</h2>
                 </div>
@@ -38,7 +38,7 @@
           </RouterLink>
         </div>
         <div class="col-md-4">
-          <div class="card" id="dua">
+          <div class="card" id="menuMalam">
             <div class="d-flex justify-content-center">
               <img src="/img/english-breakfast 1.png" alt="2" />
               <div class="card-body pt-4">
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card" id="menuDiet">
+          <div class="card" id="aktiKalori">
             <div class="d-flex justify-content-center">
               <img src="/img/cutlery 1.png" alt="3" />
               <div class="card-body pt-4">

@@ -49,48 +49,53 @@ bagian fitur menu
 #fiturMenu {
   margin-top: 49px;
 }
-.card {
+#fiturMenu .card,
+.opsiMenu .card {
   overflow: hidden;
   height: 120px;
   border-radius: 30px;
 }
-.card img {
+#fiturMenu .card img,
+.opsiMenu .card img {
   position: relative;
   top: -20px;
   width: 137.14px;
   height: 145.77px;
 }
-.card img[alt="2"] {
+#fiturMenu .card img[alt="2"],
+.opsiMenu .card img[alt="1"] {
   top: -10px;
 }
-.card img[alt="3"] {
+#fiturMenu .card img[alt="3"],
+.opsiMenu .card img[alt="2"] {
   left: -30px;
   top: -10px;
 }
-.card img[alt="4"] {
+#fiturMenu .card img[alt="4"],
+.opsiMenu .card img[alt="3"] {
   left: -25px;
 }
-.card .card-body {
+#fiturMenu .card .card-body {
   margin-left: -29px;
   text-align: left;
 }
-.card-body h2 {
+#fiturMenu .card-body h2 {
   font-size: var(--sizeTitle);
   text-transform: uppercase;
 }
-.card .card-text {
+#fiturMenu .card .card-text {
   width: 80%;
   font-size: 10px;
   font-weight: 500;
   color: #006f97;
 }
-.card .text-2 {
+#fiturMenu .card .text-2 {
   color: #9f112b;
 }
-.card .text-3 {
+#fiturMenu .card .text-3 {
   color: #707406;
 }
-.card .text-4 {
+#fiturMenu .card .text-4 {
   color: #096b1c;
 }
 #idealTubuh {
@@ -614,37 +619,25 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
   width: 100%;
   height: 15vh;
 }
+#menuMalam {
+  background: rgb(254, 181, 70);
+  background: linear-gradient(
+    90deg,
+    rgba(254, 181, 70, 1) 0%,
+    rgba(205, 130, 16, 1) 35%
+  );
+}
 
 /* BAGIAN AKTIVITAS KALORI */
 
 #fiturMenu-aktivitas {
   margin-top: 49px;
 }
-.card-aktivitas {
-  overflow: hidden;
-  height: 68px;
-  border-radius: 30px;
-}
-.card-aktivitas .card-body {
-  text-align: center;
-}
-.card-body h2 {
-  font-size: var(--sizeTitle);
-  text-transform: uppercase;
-  margin: none;
-}
-
-#satu {
-  background-color: var(--colorBiru);
+.aktivitas {
+  border: none;
 }
 
 /* aktivitas kalori */
-.card-aktivitas .card-text {
-  width: 80%;
-  font-size: 10px;
-  font-weight: 500;
-  opacity: 50%;
-}
 #hitung {
   border-radius: 10px;
   background-color: #00b1f1;
@@ -763,78 +756,3 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
   transform-origin: 83.33333% 50%;
   transform: rotate(calc(var(--value) * 180deg / 100));
 }
-
-/* setengah lingkaran */
-
-/* @keyframes progress {
-  0% {
-    --percentage: 0;
-  }
-  100% {
-    --percentage: var(--value);
-  }
-} */
-
-/* @property --percentage {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
-[role="progressbar"] {
-  --percentage: var(--value);
-  --primary: #369;
-  --secondary: #adf;
-  --size: 300px;
-  animation: progress 2s 0.5s forwards;
-  width: var(--size);
-  aspect-ratio: 2 / 1;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-[role="progressbar"]::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: conic-gradient(
-    from 0.75turn at 50% 100%,
-    green 90deg,
-    yellow,
-    red 180deg
-  );
-  mask: radial-gradient(at 50% 100%, white 55%, transparent 0);
-  mask-mode: alpha;
-  -webkit-mask: radial-gradient(at 50% 100%, #0000 55%, #000 0);
-  -webkit-mask-mode: alpha;
-  overflow: hidden;
-  border-radius: 50% / 100% 100% 0 0;
-}
-
-[role="progressbar"]::after {
-  content: "";
-  width: 60%;
-  height: 10%;
-  position: absolute;
-  bottom: -5%;
-  left: 0;
-  background: radial-gradient(
-      circle at 83.33333% 50%,
-      #fff 4%,
-      #000 0 5%,
-      #0000 0
-    ),
-    conic-gradient(
-      at -20% 50%,
-      #0000 88deg,
-      #000 88.25deg 91.75deg,
-      #0000 92deg
-    );
-  transform-origin: 83.33333% 50%;
-  transform: rotate(calc(var(--value) * 5deg / 100)); 
-} */
