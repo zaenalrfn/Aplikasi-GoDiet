@@ -31,7 +31,7 @@
             type="number"
             class="form-control"
             id="inputPassword2"
-            placeholder=""
+            v-model="beratBadanAktivitas"
           />
         </div>
         <div class="col-8">
@@ -48,7 +48,6 @@
     </div>
   </div>
   <!-- bagian popup aktivitas gerak -->
-  <div></div>
   <popUpAktivitasGerak
     v-if="popupTriggers.buttonTrigger"
     :TogglePopup="() => TogglePopup('buttonTrigger')"
@@ -82,27 +81,31 @@ export default {
       bbGerak: null,
       menit: null,
       detikMenit: null,
+      beratBadanAktivitas: null,
+      rimayatLatihan: [],
     };
   },
   mounted() {
     this.Counter;
     let self = this;
     let parameterId = this.$route.params.id;
-    const options = {
-      method: "GET",
-      url: `https://zylalabs.com/api/392/exercise+database+api/310/list+exercise+by+body+part?bodypart=${parameterId}`,
-      headers: {
-        Authorization: "Bearer 639|dwzLZuBqnS0ZgiGLjMBa1VTPpHoFYnVBlgxwpLQa",
-      },
-    };
+    // const options = {
+    //   method: "GET",
+    //   url: `https://zylalabs.com/api/392/exercise+database+api/1004/exercise+by+id?id=${[
+    //     parameterId,
+    //   ]}`,
+    //   headers: {
+    //     Authorization: "Bearer 639|dwzLZuBqnS0ZgiGLjMBa1VTPpHoFYnVBlgxwpLQa",
+    //   },
+    // };
 
-    axios(options)
-      .then(function (response) {
-        self.aktivitasId = response.data;
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    // axios(options)
+    //   .then(function (response) {
+    //     self.aktivitasId = response.data;
+    //   })
+    //   .catch(function (error) {
+    //     console.error(error);
+    //   });
 
     if (localStorage.getItem("Bb-profil")) {
       this.bbGerak = JSON.parse(localStorage.getItem("Bb-profil"));
@@ -112,19 +115,21 @@ export default {
     Counter() {
       this.clear = setInterval(() => {
         this.detik++;
-        console.log(this.detik);
         this.menit = Math.floor(this.detik / 60);
         this.detikMenit = this.detik % 60;
       }, 1000);
     },
     Hitung() {
       this.kaloriKeluar = Math.round(
-        (this.menit * (3.5 * 3.5 * this.bbGerak)) / 200
+        (this.menit * (3.5 * 3.5 * this.beratBadanAktivitas)) / 200
       );
-      console.log(this.kaloriKeluar);
+      let riwayat = {
+        nama: this.aktivitasId.name,
+      };
       localStorage.setItem("kalori-keluar", this.kaloriKeluar);
       localStorage.setItem("detik", this.detikMenit);
       localStorage.setItem("menit", this.menit);
+      localStorage.setItem("riwayat-latihan", riwayat);
     },
   },
   methods: {

@@ -17,35 +17,53 @@
     </div>
 
     <div id="fiturMenu-aktivitas">
-      <div class="row justify-content-center mb-3">
-        <div class="card aktivitas">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <!-- <div class="col-md-4">
-          <div class="card-aktivitas d-flex align-items-center mb-3" id="satu">
+      <div class="row justify-content-center">
+        <!-- <div
+          class="col-md-6"
+          v-for="aktivi in aktivitas"
+          v-bind:key="aktivi.id"
+        >
+          <div class="card aktivitas">
+            <img
+              :src="aktivi.gifUrl"
+              class="card-img-top"
+              alt="..."
+              :width="103"
+              :height="146"
+            />
             <div class="card-body">
-              <RouterLink to="/aktivitasGerak">
-                <h4 class="text-white">sfddf</h4>
-              </RouterLink>
+              <h5 class="card-title">
+                {{ aktivi.name }} <span class="text-warning">Detik x 3</span>
+              </h5>
             </div>
           </div>
         </div> -->
+        <div class="col-md-4">
+          <div class="card-aktivitas d-flex align-items-center mb-4" id="satu">
+            <div class="card-body text-center">
+              <RouterLink to="/aktivitasGerak">
+                <h4 class="text-white">latihan rumahan</h4>
+              </RouterLink>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-aktivitas d-flex align-items-center mb-4" id="satu">
+            <div class="card-body text-center">
+              <RouterLink to="/aktivitasGerak">
+                <h4 class="text-white">latihan rumahan</h4>
+              </RouterLink>
+            </div>
+          </div>
+        </div>
         <!-- <div class="col-md-4">
           <div
             v-for="aktivi in aktivitas"
             v-bind:key="aktivi.id"
-            class="card-aktivitas d-flex align-items-center mb-3"
+            class="card-aktivitas d-flex align-items-center mb-4"
             id="satu"
           >
-            <div class="card-body">
+            <div class="card-body text-center">
               <RouterLink v-bind:to="/aktivitasGerak/ + aktivi.id">
                 <h4 class="text-white">{{ aktivi.name }}</h4>
               </RouterLink>
@@ -54,17 +72,42 @@
         </div> -->
       </div>
     </div>
+    <!-- <div class="row">
+      <div class="col-md">
+        <div class="aktivitasHitung">
+          <p>Berat Badan</p>
+          <form class="row g-4 d-flex justify-content-center">
+            <div class="col-4">
+              <input
+                type="number"
+                class="form-control"
+                id="inputPassword2"
+                placeholder=""
+              />
+            </div>
+            <div class="col-8">
+              <a
+                href="#"
+                class="btn text-white mb-3 w-100"
+                id="hitung"
+                @click="() => TogglePopup('buttonTrigger')"
+              >
+                Hitung
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
-// import counter from "../views/ben.js";
 export default {
   data() {
     return {
       aktivitas: [],
-      counterAk: 0,
     };
   },
   mounted() {
@@ -78,8 +121,11 @@ export default {
     // };
     // axios(options)
     //   .then(function (response) {
-    //     self.aktivitas = response.data;
-    //     console.log(self.aktivitas);
+    //     if (response.data.length > 14) {
+    //       response.data.pop();
+    //       self.aktivitas = response.data;
+    //       console.log(self.aktivitas);
+    //     }
     //   })
     //   .catch(function (error) {
     //     console.error(error);

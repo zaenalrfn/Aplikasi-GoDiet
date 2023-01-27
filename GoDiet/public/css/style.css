@@ -634,16 +634,38 @@ BAGIAN CEK IDEAL TUBUH DAN KEBUTUHAN KALORI
   margin-top: 49px;
 }
 .aktivitas {
+  border-radius: 23px;
   border: none;
+  background-color: var(--colorInput);
+  overflow: hidden;
 }
-
+#fiturMenu-aktivitas .aktivitas .card-body {
+  background-color: var(--colorBiru);
+}
+/* #fiturMenu-aktivitas .row {
+  display: grid;
+  grid-template-columns: auto auto;
+} */
+#fiturMenu-aktivitas .row:nth-child(1) {
+  margin-bottom: 10rem !important;
+}
 /* aktivitas kalori */
 #hitung {
   border-radius: 10px;
   background-color: #00b1f1;
   border: none;
 }
-
+.card-aktivitas {
+  background-color: var(--colorBiru);
+  border-radius: 24px;
+}
+.aktivitasHitung {
+  position: fixed;
+  background-color: #ffffff;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 30px;
+}
 #inputPassword2 {
   border-radius: 10px;
   background-color: #e4f3f9;
