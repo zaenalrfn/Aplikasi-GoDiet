@@ -78,6 +78,10 @@ export default {
       .request(options)
       .then(function (response) {
         self.menuMakanan = response.data.hints;
+        if (self.menuMakanan.length > 10) {
+          self.menuMakanan.splice(0, 15);
+          console.log(self.menuMakanan);
+        }
       })
       .catch(function (error) {
         console.error(error);
