@@ -87,8 +87,8 @@ export default {
   },
   mounted() {
     this.Counter;
-    let self = this;
-    let parameterId = this.$route.params.id;
+    // let self = this;
+    // let parameterId = this.$route.params.id;
     // const options = {
     //   method: "GET",
     //   url: `https://zylalabs.com/api/392/exercise+database+api/1004/exercise+by+id?id=${[
