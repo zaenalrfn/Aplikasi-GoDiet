@@ -63,6 +63,7 @@ export default {
   },
   methods: {
     cekHu() {
+      localStorage.setItem("status", this.status);
       localStorage.setItem("notifyCek", "true");
       this.NotifyCek;
       window.location.reload();
@@ -77,7 +78,6 @@ export default {
       let popupCek = document.querySelector(".popup-cek");
       if (localStorage.getItem("notifyCek")) {
         popupCek.style.display = "none";
-        // popupCek.setAttribute("class", "d-none");
       }
     },
   },
